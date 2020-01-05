@@ -1,0 +1,105 @@
+.First_Tab {
+	background: #FB0707;
+	color: #F8E403;
+	border-bottom: 5px solid blue;
+	border-top: 5px solid green;
+}
+.Second_Tab, .Third_Tab{
+	background: #0740FB;
+	color: #F8E403;
+	font-size: 16px;
+	font-family: Verdana;
+	border-bottom: thick solid black;
+	border-top: thick solid #7FFFD4;
+}
+.Fourth_Tab{
+	background: #0FEDF5;
+	color: #483636;
+	font-size: 14px;
+	font-family: Arial;
+	border-top: 11px outset #A9A9A9;
+	border-bottom: 11px outset #FF1493;
+}
+.footer{
+	background: black;
+	color: white;
+	font-family: Ariel;
+	font-size: 16px;
+}
+table{
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+td, th {
+  border: 1px solid black;
+  border-style: dashed;
+  text-align: justify;
+}
+.backgraund1{
+	background-color: #808080;
+}
+.bacgraund2{
+	background-color: #FF8C00;
+}
+.bacgraund3{
+	background-color: #00FFFF;
+}
+#border1{
+	border-top: 4px solid red;
+	border-bottom: 4px solid green;
+}
+#border2{
+	border-top: 4px solid green;
+	border-bottom: 4px solid red;
+}
+#border3{
+	border-right: 4px solid green;
+	border-left: 4px solid red;
+}
+#border4{
+	border-left: 4px solid green;
+	border-right: 4px solid red;
+}
+#border1_1, #border2_1{        /* summing up of two ID`s  doesn't save me writing */
+	border-left-width: 4px;
+	border-left-style: solid;
+	border-top-width: 4px;
+	border-top-style: solid;
+}
+#border1_1{                             
+	border-left-color: red;
+	border-top-color: red;
+}
+#border2_1{
+	border-left-color: yellow;
+	border-top-color: yellow;
+}
+#border1_2{
+	border-top: 4px solid red;
+	border-right: 4px solid red;
+}
+#border2_2{
+	border-top: 4px solid yellow;
+	border-right: 4px solid yellow;
+}
+#border1_3{
+	border-left: 4px solid red;
+	border-bottom: 4px solid red;
+}
+#border2_3{
+	border-left: 4px solid yellow;
+	border-bottom: 4px solid yellow;
+}
+#border1_4{
+	border-right: 4px solid red;
+	border-bottom: 4px solid red;
+}
+#border2_4{
+	border-right: 4px solid yellow;
+	border-bottom: 4px solid yellow;
+}
+#bacgraund_3{
+	background-image: url(img/random-paint-splats-background.jpg);
+	background-size: cover;
+	color: white;
+}
