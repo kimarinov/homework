@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Homework7_Kaloyan EGN TASK</title>
+	<title>Homework7_Kaloyan EGN_TASK</title>
 
 </head>
 <body>
