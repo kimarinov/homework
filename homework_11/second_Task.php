@@ -2,16 +2,15 @@
 $arr = [];
 $m = 4;
 $n = 5;
-$num = 1;
+$num = 3;
 
 for ($i=0; $i <= $m; $i++) { 
-
-
 	for ($j=0; $j <= $n; $j++) { 
-		
 		$arr[$i][$j] = $num;
-		$num ++;
-
+		$num += 2;
+		if ($j == $n) {
+			$num = (($arr[$i][$j] * 2) - 2);
+		}
 	}
 }
 echo "<table border = 1>";
