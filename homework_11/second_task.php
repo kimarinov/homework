@@ -34,10 +34,10 @@ for ($i=0; $i <= $m; $i++) {
 
 
 	for ($j=0; $j <= $n; $j++) { 
-		
+
 		$arr[$j][$i] = $num;
 		$num +=3;
-	
+
 	}
 }
 echo "<table border = 1>";
@@ -59,7 +59,7 @@ $m = 4;
 $num = 1;
 
 for ($i=0; $i < $m; $i++) { 
-	
+
 	for ($j=0 ; $j < $n; $j++ ) { 
 		if ($i % 2 == 0) {
 			$arr[$i][$j] = $num;
@@ -68,7 +68,7 @@ for ($i=0; $i < $m; $i++) {
 			$arr[$i][$n - ($j + 1)] = $num;	
 		}
 		$num++;
-		
+
 	}
 }
 

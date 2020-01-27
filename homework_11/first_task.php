@@ -21,42 +21,40 @@ foreach ($students as $key => $value) {
 echo "</table>";
 $AvareScore /= 25; 
 
-$AvareScorePesho=1;
+$AvareScorePesho = null;
 foreach ($students['Pesho'] as $key => $value) {
 	$AvareScorePesho = $value + $AvareScorePesho;
 }
 $AvareScorePesho /=5;
+$students['Pesho']['average_score'] = $AvareScorePesho;
 
-$AvareScoreGosho=1;
+$AvareScoreGosho=null;
 foreach ($students['Gosho'] as $key => $value) {
 	$AvareScoreGosho = $value + $AvareScoreGosho;
 }
 $AvareScoreGosho /=5;
+$students['Gosho']['average_score'] = $AvareScoreGosho;
 
-$AvareScoreNayden=1;
+$AvareScoreNayden=null;
 foreach ($students['Nayden'] as $key => $value) {
 	$AvareScoreNayden = $value + $AvareScoreNayden;
 }
 $AvareScoreNayden /=5;
+$students['Nayden']['average_score'] = $AvareScoreNayden;
 
-$AvareScoreKaloyan=1;
+$AvareScoreKaloyan=null;
 foreach ($students['Kaloyan'] as $key => $value) {
 	$AvareScoreKaloyan = $value + $AvareScoreKaloyan;
 }
 $AvareScoreKaloyan /=5;
+$students['Kaloyan']['average_score'] = $AvareScoreKaloyan;
 
-$AvareScoreBobi=1;
+$AvareScoreBobi=null;
 foreach ($students['Bobi'] as $key => $value) {
 	$AvareScoreBobi = $value + $AvareScoreBobi;
 }
 $AvareScoreBobi /=5;
-print_r($students); echo "<br>";
-array_push($students['Pesho'],"AvarageScore $AvareScorePesho" );
-array_push($students['Gosho'], "AvarageScore $AvareScoreGosho");
-array_push($students['Nayden'], "AvarageScore $AvareScoreNayden");
-array_push($students['Kaloyan'], "AvarageScore $AvareScoreKaloyan");
-array_push($students['Bobi'], "AvarageScore  $AvareScoreBobi");
-print_r($students);
+$students['Bobi']['average_score'] = $AvareScoreBobi;
 
 echo "<table border = 1>";
 foreach ($students as $key => $value) {
@@ -69,6 +67,21 @@ foreach ($students as $key => $value) {
 }
 echo "</table>";
 
-foreach ($students['Pesho'] as $key => $value) {
-	echo "$value";
+
+$sum = [];
+foreach ($students as $name=>$student) { 
+	foreach($student as $key => $value ){
+		if( !isset($sum[$key])){
+			$sum[$key] = 0;
+		} 
+				($sum[$key] += ($value / 5 ));
+	}
 }
+
+echo "<table border = 1>";
+foreach ($sum as $key => $value) {
+	echo "<tr><td> Average score of ".$key  ."</td>";
+	echo "<td> $value </td>";
+	echo "</tr>";
+}
+echo "</table>";
