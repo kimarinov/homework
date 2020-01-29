@@ -85,3 +85,4 @@ foreach ($sum as $key => $value) {
 	echo "</tr>";
 }
 echo "</table>";
+?>
