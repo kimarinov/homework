@@ -15,7 +15,7 @@ $count = count($arr);
 //calculate R = ((JF+D)2+C*2)/P  for each subbarray
 for($i = 0; $i < $count; $i++){
 	//add R to each subarray
-	$arr[$i]['R']= (($arr[$i]['JF']+$arr[$i]['D'])*($arr[$i]['JF']+$arr[$i]['D'])+$arr[$i]['C']*2)/$arr[$i]['P'];
+	$arr[$i]['R']= (($arr[$i]['JF'] + $arr[$i]['D'])*($arr[$i]['JF'] + $arr[$i]['D'])+$arr[$i]['C'] * 2) / $arr[$i]['P'];
 
 	$sum_r += $arr[$i]['R'];
 }
