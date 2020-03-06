@@ -6,9 +6,10 @@ $read_query = "SELECT * FROM `test` WHERE `date_deleted` is null";
 
 $result = mysqli_query($conn, $read_query);
 ?>
-<table border= "1">
+<table border= "1" style="margin-left: 50px">
 	<td>#</td>
 	<td>Unit</td>
+	<td>***</td>
 <?php  
 $num = 1;
 if (mysqli_num_rows($result) > 0 ) {
@@ -17,6 +18,7 @@ if (mysqli_num_rows($result) > 0 ) {
 		<tr>
 			<td><?= $num++ ?></td>
 			<td><?= $row['test_name'] ?></td>
+			<td><a href="update.php?id=<?= $row ['test_id'] ?> ">Update</a></td>
 		</tr>
 		<?php  
 	}
