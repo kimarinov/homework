@@ -1,17 +1,18 @@
 <?php 
 include 'includes/header.php';
 
-$read_query = "SELECT * FROM `test` WHERE `date_deleted` is null";
-				
-
+$read_query = "SELECT * FROM `test` WHERE `date_deleted` is not  null";
 $result = mysqli_query($conn, $read_query);
+if (!empty($_POST)) {
+	$test_id = $_POST['test_id'];
+}
 ?>
-<a href="recyvle_bin.php">RecycleBin</a>
+<a href="index.php">HOME</a>
 <table border= "1" style="margin-left: 50px">
 	<td>#</td>
 	<td>Unit</td>
-	<td>***</td>
-	<td>Soft delete</td>
+	<td>delete</td>
+	<td>restore</td>
 <?php  
 $num = 1;
 if (mysqli_num_rows($result) > 0 ) {
@@ -20,8 +21,9 @@ if (mysqli_num_rows($result) > 0 ) {
 		<tr>
 			<td><?= $num++ ?></td>
 			<td><?= $row['test_name'] ?></td>
-			<td><a href="update.php?id=<?= $row ['test_id']?> ">Update</a></td>
-			<td><a href="soft_delete.php?id=<?= $row ['test_id']?> ">Soft delete</a></td>
+			<td><?= $row['date_deleted'] ?> </td>
+			<td><a href="restore.php?id=<?= $row ['test_id']?> ">Restore</a></td>
+
 		</tr>
 		<?php  
 	}
