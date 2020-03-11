@@ -30,4 +30,5 @@ if (mysqli_num_rows($result) > 0 ) {
 
 }
  ?>
+<tr><td colspan="100"><a href="restore_all.php">RESTORE ALL</a></td></tr>
 </table>
