@@ -21,7 +21,7 @@ if (mysqli_num_rows($result) > 0 ) {
 			<td><?= $num++ ?></td>
 			<td><?= $row['test_name'] ?></td>
 			<td><a href="update.php?id=<?= $row ['test_id']?> ">Update</a></td>
-			<td><a href="soft_delete.php?id=<?= $row ['test_id']?> ">Soft delete</a></td>
+			<td><a href="delete.php?id=<?= $row ['test_id']?> ">Soft delete</a></td>
 		</tr>
 		<?php  
 	}
