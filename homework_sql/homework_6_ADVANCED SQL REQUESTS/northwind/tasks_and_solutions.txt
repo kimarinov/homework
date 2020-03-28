@@ -1,0 +1,77 @@
+/*SELECT*/
+    -- select all employees
+SELECT * FROM `employees`
+    -- select all employee names; use alias for both tables and columns
+SELECT company as emp_name FROM `employees` as emp
+    -- select all job titles; get them uniquely
+SELECT job_title as emp_job FROM `employees` as emp
+    -- select all employees that work as coordinators, 'Sales Coordinator'
+SELECT `job_title` FROM `employees` WHERE job_title = "coordinators"
+    -- select all employees that do not work as coordinators
+SELECT `job_title` FROM `employees` WHERE NOT job_title = "coordinators"
+    -- select all order details that have quantity bigger than 50; select just quantity and distinct it
+SELECT order_details.quantity FROM order_details WHERE quantity > 50
+    -- select employees with notes / without notes
+SELECT * FROM `purchase_orders` WHERE notes is NOT null
+SELECT * FROM `purchase_orders` WHERE notes is  null
+    -- select all unique categories from the products
+SELECT DISTINCT category FROM products
+    -- select all sauces from the products
+SELECT category FROM products WHERE category = "sauces"
+    -- select all beverages from products that have minimum reorder quantity
+SELECT category FROM products WHERE category = "beverages" AND  minimum_reorder_quantity IS NOT NULL
+    -- select all beverages from products that have minimum reorder quantity or target level above 60
+SELECT category FROM products WHERE category = "beverages" AND  minimum_reorder_quantity IS NOT NULL AND target_level > 60
+    -- select products with price between 20 and 100
+SELECT category FROM products Where list_price BETWEEN 20 and 100
+    -- select products with product name between names 'Northwind Traders Clam Chowder' and 'Northwind Traders Marmalade';
+SELECT category FROM products Where attachments  BETWEEN 'Northwind Traders Clam Chowder' and 'Northwind Traders Marmalade'
+    -- select employees that are either from Seattle or Redmond
+SELECT * FROM `employees` WHERE city = "Seattle" OR "Redmond"
+    -- select all products that were purchased
+SELECT * FROM purchase_order_status WHERE purchase_order_status.status = "purchased"
+    -- add several order by-s
+
+
+    /*GROUP BY*/
+    -- aggregate functions - count the customers. Add where
+SELECT COUNT(*) FROM customers
+    -- find the cheapest and most expensive products. What is the average price of a product?
+SELECT MAX(list_price) AND MIN(list_price) AND AVG(list_price) FROM `products`
+    -- find how many products are purchased at all
+SELECT COUNT(status) from purchase_order_status where status = "purchased"
+    -- find also the product names
+SELECT products.product_name, COUNT(status) from purchase_order_status,products where status = "purchased" GROUP by products.product_name
+    -- how many customers are from Seattle?
+SELECT COUNT(city) FROM customers where city = "Seattle?"
+    -- what are the cities with more then 2 customers?
+SELECT city FROM customers GROUP by city HAVING COUNT(city) >= 2
+
+    /*JOIN*/
+    -- inner join customers and orders -  c.id as customer_id, c.first_name, c.company, c.city, o.id as order_id, o.order_date, o.shipped_date 
+SELECT customers.id as customer_id,customers.first_name, customers.company, customers.city, orders.id as order_id, orders.order_date, orders.shipped_date FROM `customers` INNER JOIN orders ON orders.customer_id = customers.id
+    -- left join customers and orders
+SELECT * FROM `customers` LEFT JOIN orders ON orders.customer_id = customers.id
+    -- right join customers and orders
+SELECT * FROM `customers` RIGHT JOIN orders ON orders.customer_id = customers.id
+    -- select all products that were purchased with name, quantity, cost and date - show join
+SELECT products.product_name, purchase_order_details.unit_cost, purchase_order_details.quantity, purchase_order_details.date_received FROM purchase_order_details LEFT JOIN products ON purchase_order_details.product_id = products.id Where unit_cost AND quantity AND date_received IS NOT NULL
+    -- find out which employees have what priviledges; test left and right joins
+SELECT employees.company, employee_privileges.privilege_id FROM `employees` LEFT JOIN employee_privileges on employee_privileges.privilege_id = employees.id
+SELECT employees.company, employee_privileges.privilege_id FROM `employee_privileges` RIGHT JOIN employees on employee_privileges.privilege_id = employees.id
+    -- find customers that are from USA and are not from USA  
+SELECT `first_name`,`country_region` FROM `customers` WHERE `country_region` = "USA"
+SELECT `first_name`,`country_region` FROM `customers` WHERE  NOT `country_region` = "USA"
+    -- list the employees that have registered more than 10 orders - join + aggregation
+ SELECT * FROM orders o JOIN employees e ON o.employee_id = e.id  GROUP by o.employee_id HAVING COUNT(o.employee_id) > 10
+ /*INSERT, UPDATE, DELETE*/
+    -- add new privilege - select, insert all, by columns. 'Send Newsletter', 'Order Approvals'  ???
+
+    -- insert new customers from suppliers - first_name, last_name, city, country_region
+INSERT INTO `suppliers`(`first_name`, `last_name`,`city`,`country_region`) VALUES ("First_name", "Last_name","city", "Country_region" )
+    -- update new customers' company (look up the id)
+UPDATE `suppliers` SET `company`="company3" WHERE id = (SELECT id FROM  suppliers ORDER BY id DESC LIMIT 1)
+    -- update customers with id between 30 and 36 with note that tey're contrasctors.
+UPDATE `customers` SET notes ='contrasctors' WHERE customers.id BETWEEN 30 AND 36
+    -- remove customers without city
+DELETE FROM `customers` WHERE customers.city IS NULL
