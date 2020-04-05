@@ -154,7 +154,7 @@ if( mysqli_num_rows($result) > 0 ){
 	<?php
 }
 ?>
-
+<a href="create.php" title="">Create recipes</a>
 <?php 
 include '../includes/footer.php'
 ?>
