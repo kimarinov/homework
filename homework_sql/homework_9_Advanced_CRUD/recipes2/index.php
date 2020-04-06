@@ -87,8 +87,8 @@ if( mysqli_num_rows($result) > 0 ){
 					<tr>
 						<td><?= $num ++?></td>
 						<!-- view recipe -->
-						<td><a title="виж рецептата" href="view_recipe.php?id=<?=$row['recipe_id']?>"><?=$row['recipe_name']?></a></td>	
-						<td><?=$row['prep_time']?></td>
+						<td><a title="виж рецептата" href="view_recipe.php?id=<?= $row['recipe_id'] ?>"><?= $row['recipe_name'] ?></a></td>	
+						<td><?= $row['prep_time'] ?></td>
 						<td><a href="update.php?id=<?= $row['recipe_id'] ?>" class="btn btn-warning">UPDATE</a></td>
 					</tr>
 					<?php
@@ -154,7 +154,7 @@ if( mysqli_num_rows($result) > 0 ){
 	<?php
 }
 ?>
-
+<a href="create.php" title="">Create recipes</a>
 <?php 
 include '../includes/footer.php'
 ?>
