@@ -16,6 +16,10 @@ if( !empty($_POST['recipe_name']) ){
 
 		$recipe_id_query = "SELECT `recipe_id` FROM `recipes` WHERE `recipe_name` = '".$_POST['recipe_name']."'";
 		//var_dump($recipe_id_query);
+
+		 $last_id = mysqli_insert_id($conn);
+		 
+
 		$recipe_id_result = mysqli_query($conn, $recipe_id_query);
 		if ( !$recipe_id_result){
 			die('Create failed!' . mysqli_error($conn));
@@ -24,16 +28,16 @@ if( !empty($_POST['recipe_name']) ){
 		//create recipes products						
 			foreach ($_POST['products'] as $product) {
 				if( !empty( $product['product']) ){
-					// echo "<pre>";
-					// var_dump($product);
-					// echo "</pre>";
+					echo "<pre>";
+					var_dump($product);
+					echo "</pre>";
 					$product_query = "INSERT INTO `recipes_products_queantities_units`(`recipe_id`, `product_id`, `quantity`, `unit_id`) ";
-					$product_query .= "VALUES (" . (int)$recipe_id. "," . (int)$product['product']. "," . (float)$product['quantity']. "," . (int)$product['unit'] . ")";
+					$product_query .= "VALUES ($last_id," . (int)$product['product']. "," . (float)$product['quantity']. "," . (int)$product['unit'] . ")";
 					var_dump($product_query);				
 					$create_res = mysqli_query($conn, $product_query);	
-					//var_dump($product_query);			
+							
 				}
 			}
-			//header("Location: index.php");
+			header("Location: index.php");
 
 	}
