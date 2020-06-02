@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		  var number_1 = "-5",number_2 = "-5", number_3 = "-5";
+		  Number(number_1), Number(number_2), Number(number_3);
+
+		if (number_3 <= number_1 && number_3 <= number_2 && number_2 <= number_1) {
+			console.log(number_1);
+			console.log(number_2);
+			console.log(number_3);
+		} else if (number_3 < number_1 && number_2 < number_3 && number_2 < number_1) {
+			console.log(number_1);
+			console.log(number_3);
+			console.log(number_2);
+		} else if (number_3 < number_2 && number_3 < number_1 && number_1 < number_2) {
+			console.log(number_2);
+			console.log(number_1);
+			console.log(number_3);
+		}else if (number_3 <= number_2 && number_3 <= number_1 && number_1 <= number_2) {
+			console.log(number_2);
+			console.log(number_1);
+			console.log(number_3);
+		}else if (number_3 < number_2 && number_1 < number_3 && number_1 < number_2) {
+			console.log(number_2);
+			console.log(number_3);
+			console.log(number_2);
+		}else if (number_2 <= number_3 && number_1 <= number_2 && number_1 <= number_3) {
+			console.log(number_3);
+			console.log(number_2);
+			console.log(number_1);
+		}else if (number_2 < number_3 && number_2 < number_1 && number_1 < number_3) {
+			console.log(number_3);
+			console.log(number_1);
+			console.log(number_2);
+		}
+	</script>
+</body>
+</html>
