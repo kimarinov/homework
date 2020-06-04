@@ -1,4 +1,12 @@
-var hex = 'aaa'
+var hex = 'aa'
 
-console.log((parseInt(hex, 16).toString(3)).padStart(8, '0'))
-console.log((parseInt(hex, 16).toString(2)).padStart(8, '0'))
+function HexToBin(str){
+	var hex = str;
+	console.log((parseInt(hex, 16).toString(2)).padStart(8, '0'))
+	return str;
+}
+
+HexToBin('aa')
+HexToBin('AA')
+HexToBin('234')
+HexToBin('F')
