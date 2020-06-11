@@ -5,7 +5,6 @@ function paintMatrix(n) {
       for (var j = 1; j <= n; j++) {
         result += (i + j - 1);
         result += " ";
-
       }
 
       console.log(result);

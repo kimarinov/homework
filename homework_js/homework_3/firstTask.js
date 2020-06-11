@@ -13,5 +13,3 @@ for (var i = arr.length - 1; i >= 0; i--) {
 
 console.log(min);
 console.log(max);
-console.log(sum);
-console.log(sum/avg);
