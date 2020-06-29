@@ -1,0 +1,135 @@
+<html><head>
+	<meta charset="UTF-8">
+	<title>задача 02</title>
+</head>
+<body>
+	<h1>Задача 02 Магически квадрати</h1>
+	<h2>Нека е дадена квадратна таблица съдържаща числа. Ще казваме, че тя е магически квадрат, ако сбора на числата във всички нейни редове, всички колони и по двата диагонала, е един и същ. Например дадената по-долу таблица е магически квадрат:</h2>
+	<table border="1">
+		<tr>
+			<td>4</td>
+			<td>14</td>
+			<td>15</td>
+			<td>1</td>
+		</tr>
+			<td>9</td>
+			<td>7</td>
+			<td>6</td>
+			<td>12</td>
+		<tr>
+			<td>5</td>
+			<td>11</td>
+			<td>10</td>
+			<td>8</td>
+		</tr>
+		<tr>
+			<td>16</td>
+			<td>2</td>
+			<td>3</td>
+			<td>13</td>
+		</tr>
+	</table>
+	
+	<p> Напишете програма, която въвежда от потребителя число N -- размерът на таблицата, следвано от N2 цели числа -- нейните елементи. Считаме, че N ≤ 10. Елементите на таблицата се въвеждат ред по ред, започвайки от най-горния. Не е задължително всички елементи в таблицата да са различни, например може всички числа в нея да са равни на 1. Програмата трябва да изведе на екрана текст “True”, ако таблицата е магически квадрат и “False” в противен случай.</p>
+	<p>По-долу е дадена примерна таблица с размери 3x3 и как би могла да работи програмата за нея:</p>
+
+	<table border="1">
+		<tr>
+			<td>4</td>
+			<td>9</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>5</td>
+			<td>7</td>
+		</tr>
+		<tr>
+			<td>8</td>
+			<td>1</td>
+			<td>6</td>
+		</tr>
+	</table>
+	<p>EnterN:3</p>
+	<p>Enter table elements: 4 9 2 3 5 7 8 1 6</p>
+	<p>True</p>
+	
+	<script type="text/javascript">
+		var num = 3,
+			input = [ 4, 9, 2, 3, 5, 7, 8, 1, 6 ],
+			table;
+		
+//generate square
+	function sqrGen ( input , num )
+	{	
+		let row = [],
+			table = [],
+			len = input.length;
+			
+		for (let i = 0; i < len; i++)
+		{
+			row.push( input[i] );
+			if ( (i+1) % num == 0 )
+			{
+				table.push( row );
+				row = [];
+			}
+		}
+		return table;
+	}
+
+	table = sqrGen( input, num );
+
+//check the magic
+	function isMagicSquare ()
+	{
+		let sumRow = 0,
+			sumCol = 0, 
+			sumDia1 = 0, 
+			sumDia2 = 0,
+			output = true,
+			S = 0;
+
+		for ( let g = 0; g < num; g++)
+		{
+			sumDia1 += table [g] [g];
+			sumDia2 += table [g] [num-g-1];
+		}
+
+		if ( sumDia2 == sumDia1 ) 
+		{
+			S = sumDia1;
+			for (let i = 0; i < num; i++)
+			{	
+				for (let j = 0; j < num; j++)
+				{
+					sumCol += table[j][i];
+					sumRow += table[i][j];
+				}
+
+				if ( ( sumCol == S ) && ( sumRow == S ) )
+				{
+					sumRow = 0;
+					sumCol = 0;
+				}
+				else 
+				{
+					output = false;
+					break; 
+				}
+			}
+		}
+		else 
+		{
+		 	output = false;	
+		}
+
+		( output )? output = 'yes' : output = 'no'; 
+		console.log( output );
+	}
+
+	isMagicSquare() ;
+	</script>
+
+
+</body></html>

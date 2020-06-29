@@ -29,7 +29,8 @@ function generateSquare(n) {
         } 
           
         //2nd condition 
-        if (magicSquare[i][j] != 0)  
+        console.log(magicSquare[i])
+        if (magicSquare[i] != 0)  
         { 
             j -= 2; 
             i++; 

@@ -20,4 +20,5 @@ newArr = ConvertToMatrix(3,[4, 9, 2, 3, 5, 7, 8, 1, 6]);
 // 	}
 // }
 
-console.log(newArr[1])
+newArr[1][1] = newArr.push()
+console.log(newArr[1][1])
