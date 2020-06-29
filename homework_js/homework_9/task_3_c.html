@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Task 3 c</title>
+</head>
+<body>
+	<div id="someName"></div>
+
+	<script type="text/javascript">
+		function errorMessage(error){
+			let errorP = document.createElement("p");
+
+			errorP.innerHTML = error;
+
+			errorP.style.color = "#f00";
+			errorP.style.fontSize = "20px";
+
+			document.body.appendChild(errorP);
+		}
+
+		function checkIfFirstParamIsStr(id){
+			let typeOfInput = typeof(id);
+
+			if (typeOfInput != "string") {
+				 errorMessage("Sorry the entered ID is not a string!");
+				 return false;
+			}
+			return true;
+		}
+
+		function checkIfElementExists(id){
+			let element =  document.getElementById(id);
+
+			if (element === null) {
+				 errorMessage("Sorry the entered ID isn't exesting!");
+				 return false;
+			}
+			return true;
+		}
+
+		function checkIfSecondParamIsArr(arr){
+			let inputType = typeof(arr);
+
+			if (inputType != "object") {
+				 errorMessage("Sorry the entered element isn't array!");
+				 return false;
+			}
+			return true;
+		}
+
+		function checkIfArrIsEmpty(arr){
+			let arrLen = arr.length;
+
+			if (arrLen <= 0) {
+				 errorMessage("Sorry the entered element is empty array!");
+				 return false;
+			}
+			return true;
+		}
+
+		function checkSecondElementValue(arr){
+			for (let ind in arr) {
+				if (arr[ind] == false) {
+					errorMessage("Sorry the entered array value is falsy!");
+					return false;
+				}
+			}
+			return true;
+		}
+
+		function addTheContentWithNoEmptyDivs(id, arr){
+			let parentElement = document.getElementById(id);
+
+			for (let ind in arr) {
+				if(typeof(arr[ind]) != "string" && typeof(arr[ind]) != "number" ){
+					// We do not create a divs
+					continue;
+				}else{
+
+					let childElement = document.createElement("div");
+
+					childElement.innerHTML = arr[ind];
+
+					parentElement.appendChild(childElement);
+				}
+			}
+		}
+
+		function addTheContentWithEmptyDivs(id, arr){
+			let parentElement = document.getElementById(id);
+			for (let ind in arr) {
+				// Error
+				if(typeof(arr[ind]) != "string" && typeof(arr[ind]) != "number"){
+					// We create an empty div
+
+					let childElement = document.createElement("div");
+
+					childElement.innerHTML = " ";
+
+					parentElement.appendChild(childElement);
+				}else{
+
+					let childElement = document.createElement("div");
+
+					childElement.innerHTML = arr[ind];
+
+					parentElement.appendChild(childElement);
+				}
+			}
+		}
+
+		function task3C(id, arr){
+			if (checkIfFirstParamIsStr(id) != false) {
+				if (checkIfElementExists(id) != false) {
+					if (checkIfSecondParamIsArr(arr) != false) {
+						if (checkIfArrIsEmpty(arr) != false) {
+							if (checkSecondElementValue(arr) != false) {
+
+
+								// Divs with empty content are printed
+								addTheContentWithEmptyDivs(id, arr);
+
+
+								// Divs without empty content are printed
+								// addTheContentWithNoEmptyDivs(id, arr);
+							}
+						}
+					}
+				}
+			}
+		}
+
+		task3C("someName", ["Hello", 1 ,"World","a", true]);
+	</script>
+</body>
+</html>

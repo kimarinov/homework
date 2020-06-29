@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Task 3 b</title>
+</head>
+<body>
+	<p id="targetContent">Hello World!</p>
+
+	<script type="text/javascript">
+		function deleteContent(id){
+			let targetElement = document.getElementById(id);
+
+			targetElement.innerHTML = "";
+		}
+
+		deleteContent("targetContent");
+	</script>
+</body>
+</html>

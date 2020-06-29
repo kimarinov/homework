@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Task 3 a</title>
+</head>
+<body>
+	<section id="targetContent">
+
+	</section>
+	<script type="text/javascript">
+		function insertDivs(id, arr){
+			let parentElement = document.getElementById(id);
+
+			for (let ind in arr) {
+				let childElement = document.createElement("div");
+
+				childElement.innerHTML = arr[ind];
+
+				parentElement.appendChild(childElement);
+			}
+		}
+
+		insertDivs("targetContent", ["H", "e", "l", "l", "o", " ", "W", "o", "r", "l", "d"]);
+	</script>
+</body>
+</html>
