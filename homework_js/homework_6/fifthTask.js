@@ -5,12 +5,9 @@ function listToMatrix(list, elementsPerSubArray) {
         if (i % elementsPerSubArray == 0) {
             k++;
             matrix[k] = [];
-             //console.log(k)
-            // console.log(i)
-            // console.log(i % elementsPerSubArray)
-            // console.log(matrix)
+
         }
-       // console.log(list[i])
+     
         matrix[k].push(list[i]);
     }
 
