@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <div class="relative">
+        <div class="bigPic">
+            <p style="font-size: 150px">Image 1</p>
+            <img src="img/129633a.jpg">
+        </div>
+        <div class="smollPic">
+        	<input  style="font-size: 30px" type="text" name="" placeholder="Search.." >
+            <div>
+                <p style="font-size: 50px">Name 1</p>
+                <img src="img/129633a.jpg">
+            </div>
+            <div>
+                <p style="font-size: 50px">Image 2</p>
+                <img src="img/129633b.jpg">
+            </div>
+            <div>
+                <p style="font-size: 50px">Image 3</p>
+                <img src="img/129633c.jpg">
+            </div>
+            <div>
+                <p style="font-size: 50px">store 4</p>
+                <img src="img/129633d.jpg">
+            </div>
+            <div>
+                <p style="font-size: 50px">Image 5</p>
+                <img src="img/129633e.jpg">
+            </div>
+        </div>
+        <script type="text/javascript">
+        $('.smollPic div').mouseover(function(event) {
+            let srcImage = $(this).children('img').attr('src');
+            $('.bigPic img').attr('src', srcImage);
+            let title = $(this).children('p').text();
+            $('.bigPic p').text(title)
+
+
+        });
+        $('input').on('keyup', function(event) {
+        	let value = $(this).val().toLowerCase();
+        
+        	$('.smollPic div ').filter(function(index) {
+ 
+        		$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        		
+        	});
+        });
+        </script>
+</body>
+
+</html>
