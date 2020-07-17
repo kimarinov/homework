@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Taks 1</title>
+	<!-- jQuery 3.5.1 uncompressed -->
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+	<style type="text/css">
+		#big_photo{
+			width: 70%;
+			display: inline-block;
+		}
+		#content{
+			float: right;
+			border: 1px solid #000;
+			width: 15%;
+		}
+		.mini{
+			width: 55%;
+		}
+		.big{
+			width: 65%;
+		}
+	</style>
+</head>
+<body>
+	<div id="big_photo">
+		<p class="title">image <b>1</b></p>
+		<img class="big" src="img/129633a.jpg">
+		<div id="filterBlock">
+			<br><br><br><br><br>
+			<span>Search: </span>
+			<input type="text" name="filter" id="filter">
+		</div>
+	</div>
+
+	<div id="content">
+		<div id="image1">
+			<p class="title">image <b>1</b></p>
+			<img class="mini" src="img/129633a.jpg">
+			<hr>
+		</div>
+		
+		<div id="image12">
+			<p class="title">image <b>12</b></p>
+			<img class="mini" src="img/129633b.jpg">
+			<hr>
+		</div>
+		<div id="image123">
+			<p class="title">image <b>123</b></p>
+			<img class="mini" src="img/129633c.jpg">
+			<hr>
+		</div>
+		<div id="image1234">
+			<p class="title">image <b>1234</b></p>
+			<img class="mini" src="img/129633d.jpg">
+			<hr>
+		</div>
+		<div id="image12345">
+			<p class="title">image <b>12345</b></p>
+			<img class="mini" src="img/129633e.jpg">
+		</div>
+	</div>
+	<script type="text/javascript">
+		let bigPhoto = $(".big");
+		let content = $("#content .mini");
+
+		$(content).on('mouseover', changeBigImage);
+
+		function changeBigImage(e){
+			e.preventDefault();
+
+			let newImgSrc = $(this).attr("src");
+
+			$(bigPhoto).attr("src", newImgSrc);
+
+			let imgTitle = $(this).siblings('.title').text(), bigPhotoText = $("#big_photo .title"), textParts;
+
+			textParts = imgTitle.split(" ");
+
+			$(bigPhotoText).text(textParts[0] + " ");
+
+			$("<b>" + textParts[1] + "</b>").appendTo(bigPhotoText);
+
+		}
+
+		let filterInput = $("#filter");
+
+		$(filterInput).on('input', function(e) {
+			e.preventDefault();
+			let searchWord = $(this).val();
+
+			$(".mini").each(function(){
+				let imgText = $(this).siblings('.title').text(),
+				textParts = imgText.split(" ");
+				
+				if (!imgText.includes(searchWord)) {
+					let imageId = "#" + textParts[0] + textParts[1];
+					$(imageId).hide();
+				}
+			});
+		});
+	</script>
+</body>
+</html>

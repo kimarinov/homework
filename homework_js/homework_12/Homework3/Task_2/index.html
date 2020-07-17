@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 2</title>
+    <!-- jQuery 3.5.1 uncompressed -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <style type="text/css">
+    #container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+    }
+
+    #left,
+    #right {
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -22px;
+        padding: 16px;
+        color: white;
+        border-radius: 0 3px 3px 0;
+    }
+
+    #right {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    #left:hover,
+    #right:hover {
+        background-color: #000;
+    }
+
+    .dot {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #ccc;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    .active,
+    .dot:hover {
+        background-color: #444040;
+    }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="images">
+            <img src="img/129633a.jpg" style="width:100%">
+        </div>
+        <div class="images">
+            <img src="img/129633b.jpg" style="width:100%">
+        </div>
+        <div class="images">
+            <img src="img/129633c.jpg" style="width:100%">
+        </div>
+        <div class="images">
+            <img src="img/129633d.jpg" style="width:100%">
+        </div>
+        <div class="images">
+            <img src="img/129633e.jpg" style="width:100%">
+        </div>
+        <a id="left">&larr;</a>
+        <a id="right">&rarr;</a>
+    </div>
+    <br>
+    <div style="text-align:center">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+    <script type="text/javascript">
+    let imgSrc = [];
+    $(".images").each(function() {
+        let currentImgSrc = $(this).children().attr("src");
+        imgSrc.push(currentImgSrc);
+        if ($(this).children().attr("src") == imgSrc[0]) {
+            $(this).children().show();
+            let firstDot = $(".dot").first();
+            firstDot.attr({
+                class: "dot active"
+            });
+        } else {
+            $(this).children().hide();
+        }
+    });
+
+    $("#left").on('click', function(e) {
+        e.preventDefault();
+
+        $(".images").children().each(function(ind){
+            if ($(this).is(':visible')) {
+                let curentImage = $(this).attr("src");
+                let indBefore;
+                if (ind == 0) {
+                    indBefore = imgSrc.length-1;
+                }else{
+                    indBefore = ind-1;
+                }
+
+                let prevImg = imgSrc[indBefore];
+
+                $(this).hide();
+                $(".images").children().each(function (ind) {
+                    if ($(this).attr("src") == prevImg) {
+                        $(this).show();
+                    }
+                });
+                let dot = $(".dot")[ind];
+                $(dot).attr({
+                    class: "dot"
+                });
+                let newDotId;
+                if (ind == 0) {
+                    newDotId = $(".dot").length-1;
+                } else {
+                    newDotId = ind -1;
+                }
+
+                let newActiveDot = $(".dot")[newDotId];
+                $(newActiveDot).attr({
+                    class: "dot active"
+                });
+                return false;
+            }
+        });
+    });
+
+    $("#right").on('click', function(e) {
+        e.preventDefault();
+
+        $(".images").children().each(function(ind){
+            if ($(this).is(':visible')) {
+                let curentImage = $(this).attr("src");
+                let indAfter;
+                if (ind == imgSrc.length-1) {
+                    indAfter = 0;
+                }else{
+                    indAfter = ind+1;
+                }
+
+                let nextImg = imgSrc[indAfter];
+
+                $(this).hide();
+                $(".images").children().each(function (ind) {
+                    if ($(this).attr("src") == nextImg) {
+                        $(this).show();
+                    }
+                });
+                let dot = $(".dot")[ind];
+                $(dot).attr({
+                    class: "dot"
+                });
+                let newDotId;
+                if (ind == $(".dot").length - 1) {
+                    newDotId = 0;
+                } else {
+                    newDotId = ind+1;
+                }
+
+                let newActiveDot = $(".dot")[newDotId];
+                $(newActiveDot).attr({
+                    class: "dot active"
+                });
+                return false;
+            }
+        });
+    });
+
+    $(".dot").each(function(ind) {
+        $(this).on('click', function(e) {
+            e.preventDefault();
+            console.log(ind);
+           // imgSrc[ind].show();
+            $(".images").children().hide();
+            $(".images:nth-child(" + (ind+1) + ")").children().show();
+
+         let dot = $(".dot");
+            $(dot).attr({
+                class: "dot"
+            });
+
+            let newActiveDot = $(".dot")[ind];
+            $(newActiveDot).attr({
+                class: "dot active"
+            });
+        });
+    });
+    </script>
+</body>
+</html>

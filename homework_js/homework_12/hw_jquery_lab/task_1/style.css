@@ -1,0 +1,9 @@
+.left {
+    position: fixed;
+    
+}
+.right {
+    position:absolute;
+    width: 50%;
+    margin-left: 70%;
+}
