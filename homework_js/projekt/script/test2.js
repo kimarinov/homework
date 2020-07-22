@@ -112120,7 +112120,6 @@ while (count < len) {
         for (var i = count; i < len; i++) {
             sum += arr[i];
             if (sum <= 0) {
-                //sum = 0;
                 break;
             }
         }
@@ -112128,7 +112127,6 @@ while (count < len) {
             for (var j = 0; j < count; j++) {
                 sum2 += arr[j];
                 if ((sum + sum2) <= 0) {
-                    //sum2 = 0;
                     break;
                 }
             }
