@@ -1,7 +1,18 @@
 $('#btn').on('click', function(event) {
     event.preventDefault();
-    let jsonArr = $('#textarea').val()
+    let jsonArr = $('#textarea').val();
+    if (SyntaxError){
+        console.log(1);
+        $('#error').text("Please");
+
+    }
     let objArr = JSON.parse(jsonArr);
+
+    // if (!objArr.input.values || !objArr.output) {
+    //     $('#error').text("Please")
+
+    // }
+    //console.log(JSON.parse(jsonArr));
     let arr = objArr.input.values
     var arrOutput = [];
     var len = arr.length;
@@ -34,5 +45,15 @@ $('#btn').on('click', function(event) {
         }
         count++;
     }
-    console.log(arrOutput);
+    //console.log(arrOutput);
+    //console.log(objArr.output.length);
+    $('#project').text('lenth of output: ' + arrOutput.length + " the values is/are: ")
+    $.each(arrOutput, function(index, val) {
+        $('#project').append(val + " ")
+    });
+     $('#test').text('lenth of output: ' + objArr.output.length + " the values is/are: ")
+    $.each(objArr.output, function(index, val) {
+        $('#test').append(val + " ")
+    });
+
 });
