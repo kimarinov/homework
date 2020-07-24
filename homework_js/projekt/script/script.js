@@ -1,9 +1,11 @@
+let erroMsg = "Please fill corrct JSON input: {   'input': {'values': [value1, value2, value3, ...},'output': ['value1, value2, ...']";
+
 $('#btn').on('click', function(event) {
     event.preventDefault();
+    $('#error').text("asd");
     let jsonArr = $('#textarea').val();
     if (SyntaxError){
-        console.log(1);
-        $('#error').text("Please");
+        $('#error').text(erroMsg);
 
     }
     let objArr = JSON.parse(jsonArr);
@@ -47,13 +49,13 @@ $('#btn').on('click', function(event) {
     }
     //console.log(arrOutput);
     //console.log(objArr.output.length);
-    $('#project').text('lenth of output: ' + arrOutput.length + " the values is/are: ")
+    $('#project p:nth-child(2)').text('lenth of output: ' + arrOutput.length + " the values is/are: ")
     $.each(arrOutput, function(index, val) {
-        $('#project').append(val + " ")
+        $('#project p:nth-child(2)').append(val + " ")
     });
-     $('#test').text('lenth of output: ' + objArr.output.length + " the values is/are: ")
+     $('#test p:nth-child(2)').text('lenth of output: ' + objArr.output.length + " the values is/are: ")
     $.each(objArr.output, function(index, val) {
-        $('#test').append(val + " ")
+        $('#test p:nth-child(2)').append(val + " ")
     });
 
 });

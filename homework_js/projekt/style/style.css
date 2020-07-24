@@ -1,0 +1,36 @@
+body {
+    background-color: #45F9F7;
+}
+
+#error {
+    color: #F60A26;
+}
+
+#project {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    left: 250px;
+    width: 400px;
+    height: 100px;
+}
+
+#test {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    left: 700px;
+    width: 400px;
+    height: 100px;
+    
+}
+
+#error {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    left: 120px;
+    width: 130px;
+    height: 100px;
+    
+}
