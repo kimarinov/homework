@@ -2,19 +2,20 @@ let erroMsg = "Please fill corrct JSON input: {   'input': {'values': [value1, v
 
 $('#btn').on('click', function(event) {
     event.preventDefault();
-    $('#error').text("asd");
+    $('#error').text(null);
     let jsonArr = $('#textarea').val();
-    if (SyntaxError){
+    //check for valid Json input
+    try {
+        let objArr = JSON.parse(jsonArr)
+    } catch (objArr) {
         $('#error').text(erroMsg);
-
     }
-    let objArr = JSON.parse(jsonArr);
+    let objArr = JSON.parse(jsonArr)
+    //check for json array with input,values and output key
+    if (!objArr.input.values || !objArr.input || !objArr || !objArr.output) {
+        $('#error').text(erroMsg);
+    }
 
-    // if (!objArr.input.values || !objArr.output) {
-    //     $('#error').text("Please")
-
-    // }
-    //console.log(JSON.parse(jsonArr));
     let arr = objArr.input.values
     var arrOutput = [];
     var len = arr.length;
@@ -39,7 +40,7 @@ $('#btn').on('click', function(event) {
             }
 
             if ((sum + sum2) > 0) {
-                //console.log(count);
+             
                 arrOutput.push(count);
             }
             sum = 0;
@@ -47,13 +48,12 @@ $('#btn').on('click', function(event) {
         }
         count++;
     }
-    //console.log(arrOutput);
-    //console.log(objArr.output.length);
+
     $('#project p:nth-child(2)').text('lenth of output: ' + arrOutput.length + " the values is/are: ")
     $.each(arrOutput, function(index, val) {
         $('#project p:nth-child(2)').append(val + " ")
     });
-     $('#test p:nth-child(2)').text('lenth of output: ' + objArr.output.length + " the values is/are: ")
+    $('#test p:nth-child(2)').text('lenth of output: ' + objArr.output.length + " the values is/are: ")
     $.each(objArr.output, function(index, val) {
         $('#test p:nth-child(2)').append(val + " ")
     });
