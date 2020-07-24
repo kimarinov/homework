@@ -3,29 +3,29 @@ let erroMsg = "Please fill corrct JSON input: {   'input': {'values': [value1, v
 $('#btn').on('click', function(event) {
     event.preventDefault();
 
-    //delete text from <p>
-    $('#error').text(null);
-    $('#project p:nth-child(2)').text(null)
-    $('#test p:nth-child(2)').text(null)
+    //remove <p> elements
+    $('#error').remove();
+    $('#project p:nth-child(2)').remove();
+    $('#test p:nth-child(2)').remove();
 
     let jsonArr = $('#textarea').val(),
         flag = true;
     //check for valid Json input
     try {
-        let objArr = JSON.parse(jsonArr)
+        let objArr = JSON.parse(jsonArr);
     } catch (objArr) {
         $('#error').text(erroMsg);
         flag = false;
     }
-    let objArr = JSON.parse(jsonArr)
+    let objArr = JSON.parse(jsonArr);
 
     //check for json array with input,values and output key
     if (!objArr.input || !objArr.input.values || !objArr.output) {
-        $('#error').text(erroMsg);
+        $('#btn').after('<p id="error">' +erroMsg+'</p>');
         flag = false;
     }
 
-    let arr = objArr.input.values
+    let arr = objArr.input.values;
     var arrOutput = [];
     var len = arr.length;
     let sum = 0,
@@ -65,18 +65,16 @@ $('#btn').on('click', function(event) {
         }
         count++;
     }
-    //if have valid input print arrOutput and output from JSON input
+    //if have valid input print arrOutput and output from JSON input in new <p> elements
     if (flag = true) {
-        $('#project p:nth-child(2)').text('lenth of output: ' + arrOutput.length + " the values is/are: ")
+
+        $('#project p').after('<p>Lenth of output is: ' + objArr.output.length + ' The values is/are:  </p>');
         $.each(arrOutput, function(index, val) {
-            $('#project p:nth-child(2)').append(val + " ")
+            $('#project p:nth-child(2)').append(val + " ");
         });
-        $('#test p:nth-child(2)').text('lenth of output: ' + objArr.output.length + " the values is/are: ")
-        $.each(objArr.output, function(index, val) {
-            $('#test p:nth-child(2)').append(val + " ")
+        $('#test p').after('<p>Lenth of output is: ' + objArr.output.length + ' The values is/are:  </p>');
+        $.each(arrOutput, function(index, val) {
+            $('#test p:nth-child(2)').append(val + " ");
         });
-
     }
-
-
 });
