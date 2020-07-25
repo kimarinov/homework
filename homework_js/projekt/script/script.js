@@ -14,7 +14,7 @@ $('#btn').on('click', function(event) {
     try {
         let objArr = JSON.parse(jsonArr);
     } catch (objArr) {
-        $('#error').text(erroMsg);
+        $('#btn').after('<p id="error">' +erroMsg+'</p>');
         flag = false;
     }
     let objArr = JSON.parse(jsonArr);
