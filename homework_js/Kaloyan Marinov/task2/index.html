@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task2</title>
+</head>
+<body>
+	<div id="wrapper"></div>
+</body>
+<script type="text/javascript">
+	let element = document.getElementById('wrapper'),
+        num = 50;
+        divElemts = document.createElement('div');
+console.log(element);
+
+for (var i = 0; i < num; i++) {
+	let titleElement, pElement,imgElement;
+	 divElemts = document.createElement('div');
+	 titleElement = document.createElement('title');
+	 titleElement.setAttribute("id", i * 2);
+	 pElement = document.createElement('p')
+	 pElement.innerHTML = "P paragraph " + i ;
+	 imgElement = document.createElement('img');
+	 imgElement.setAttribute("src", "img/image1.jpg");
+	  imgElement.setAttribute("alt", "image" + i);
+	 pElement.appendChild(imgElement);
+	 divElemts.appendChild(titleElement);
+	  divElemts.appendChild(pElement);
+
+	 element.appendChild(divElemts);
+	
+}
+
+//element.appendChild(divElemts);
+</script>
+</html>
+<title>asdas</title>
