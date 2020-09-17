@@ -1,0 +1,34 @@
+{
+	"data": [
+		{
+			"username": "Gosho",
+			"password": "123",
+			"role": "plain user"
+		},
+		{
+			"username": "Pesho",
+			"password": "456",
+			"role": "admin"
+		},
+		{
+			"username": "user1",
+			"password": "test",
+			"role": "plain user"
+		},
+		{
+			"username": "admin",
+			"password": "test123",
+			"role": "admin"
+		},
+		{
+			"username": "user2",
+			"password": "testing",
+			"role": "plain user"
+		},
+		{
+			"username": "user3",
+			"password": "Secret123",
+			"role": "plain user"
+		}
+	]
+}
